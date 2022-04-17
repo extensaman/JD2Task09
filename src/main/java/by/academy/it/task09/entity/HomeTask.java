@@ -2,11 +2,11 @@ package by.academy.it.task09.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.ToString;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
@@ -18,14 +18,12 @@ import java.time.LocalDate;
 /**
  *
  */
-@Setter
-@Getter
 @NoArgsConstructor
-@AllArgsConstructor
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @DiscriminatorValue("home_task")
+@Access(AccessType.FIELD)
 public class HomeTask extends Task {
     /**
      *

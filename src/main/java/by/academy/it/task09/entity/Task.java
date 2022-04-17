@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
@@ -22,8 +24,6 @@ import javax.persistence.Table;
  *
  */
 @NoArgsConstructor
-@Setter
-@Getter
 @ToString
 @EqualsAndHashCode
 @Entity
@@ -31,6 +31,7 @@ import javax.persistence.Table;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "task_type", discriminatorType = DiscriminatorType.STRING)
 @DiscriminatorValue("null")
+@Access(AccessType.FIELD)
 public class Task {
     /**
      *
@@ -53,5 +54,9 @@ public class Task {
     public Task(String name, String description) {
         this.name = name;
         this.description = description;
+    }
+
+    public String getName() {
+        return name;
     }
 }
