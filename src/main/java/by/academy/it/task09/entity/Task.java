@@ -1,0 +1,55 @@
+package by.academy.it.task09.entity;
+
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
+
+/**
+ *
+ */
+@NoArgsConstructor
+@Setter
+@Getter
+@ToString
+@EqualsAndHashCode
+@Entity
+@Table
+@Inheritance(strategy = InheritanceType.JOINED)
+public class Task {
+    /**
+     *
+     */
+    @Id
+    @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    /**
+     *
+     */
+    @Column
+    private String name;
+    /**
+     *
+     */
+    @Column(length = 1000)
+    private String description;
+
+    public Task(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+}
